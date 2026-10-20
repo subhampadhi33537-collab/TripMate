@@ -1,0 +1,33 @@
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyd
+.Python
+
+# Virtual environments
+
+venv/
+env/
+.venv/
+projectenv/
+
+# IDE
+
+.vscode/
+.idea/
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db

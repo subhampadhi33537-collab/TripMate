@@ -14,7 +14,7 @@ import operator
 import uuid
 
 import psycopg
-from psycopg.rows import dict_flow
+
 
 from langgraph.graph import StateGraph,START,END
 from langgraph.checkpoint.postgres import PostgresSaver
@@ -56,12 +56,12 @@ llm=ChatGroq(
 )
 
 class TravelState(TypedDict):
-    message:Annotated[list[AnyMessage],operator.add]
-    user_query:str
-    flight_results:str
-    hotel_results:str
-    itinerary:str
-    llm_calls:int
+    messages: Annotated[list[AnyMessage], operator.add]
+    user_query: str
+    flight_results: str
+    hotel_results: str
+    itinerary: str
+    llm_calls: int
 
 
 # flight agent
@@ -194,7 +194,7 @@ checkpointer=PostgresSaver(_conn)
 
 checkpointer.setup()
 
-travel_graph=graph.compile(checkpinter=checkpointer)
+travel_graph = graph.compile(checkpointer=checkpointer)
 
 
 
@@ -237,3 +237,4 @@ def run_travel_agent(user_input: str, thread_id: str | None = None):
         "itinerary": result.get("itinerary", ""),
         "llm_calls": result.get("llm_calls", 0),
     }
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TripMate AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- 3D Solar System Canvas Background -->
+    <canvas id="solarCanvas"></canvas>
+
+    <main class="app-container">
+
+        <section class="hero-section">
+            <div class="badge">
+                ✈️ TripMate AI — A Multi-Agent Travel Planner with LangGraph
+            </div>
+
+            <h1>
+                Plan Your Perfect Trip with AI
+            </h1>
+
+            <p>
+                Search flights, discover hotels, and generate a complete travel itinerary using a multi-agent LangGraph system.
+            </p>
+        </section>
+
+        <section class="planner-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Where do you want to go?</h2>
+                    <p>
+                        Example: Plan a complete 7 days Japan trip from Bangladesh under 2 lakhs.
+                    </p>
+                </div>
+
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="textarea-wrap">
+                    <textarea
+                        id="userInput"
+                        placeholder="Plan a complete 7 days Japan trip including flights, hotels and sightseeing under 2 lakhs..."
+                    ></textarea>
+
+                    <div class="voice-bar">
+                        <button id="micBtn" class="mic-btn" onclick="toggleVoice()" title="Speak your travel plan">
+                            <svg id="micIcon" class="mic-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="9" y="2" width="6" height="13" rx="3" fill="currentColor"/>
+                                <path d="M5 11a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span id="micLabel" class="mic-label">Speak</span>
+                        </button>
+                        <span id="voiceStatus" class="voice-status"></span>
+                    </div>
+                </div>
+
+                <button id="sendBtn" onclick="sendMessage()">
+                    <span id="btnText">Generate Plan</span>
+                    <span id="btnLoader" class="loader hidden"></span>
+                </button>
+            </div>
+
+            <div class="quick-prompts">
+                <button onclick="setPrompt('Plan a complete 7 days Japan trip from Bangladesh including flights, hotels and sightseeing under 2 lakhs.')">
+                    Japan Trip
+                </button>
+
+                <button onclick="setPrompt('Plan a 5 days Dubai trip from Dhaka with flights, hotels and sightseeing.')">
+                    Dubai Trip
+                </button>
+
+                <button onclick="setPrompt('Plan a 7 days Thailand trip from Bangladesh with budget hotels and sightseeing.')">
+                    Thailand Trip
+                </button>
+
+                <button onclick="setPrompt('Give me all country flight info.')">
+                    Global Flights
+                </button>
+            </div>
+
+        </section>
+
+        <section id="resultSection" class="result-section hidden">
+
+            <div class="result-header">
+                <div>
+                    <h2>Your AI Travel Plan</h2>
+                    <p id="threadInfo">Thread ID: -</p>
+                </div>
+
+                <div class="result-actions">
+                    <button class="copy-btn" onclick="copyResult()">
+                        Copy
+                    </button>
+
+                    <button class="download-btn" onclick="downloadPDF()">
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div id="pdfContent" class="pdf-content">
+                <h1 class="pdf-title">AI Travel Plan</h1>
+                <div id="resultBox" class="result-box"></div>
+            </div>
+
+        </section>
+
+        <section id="errorBox" class="error-box hidden"></section>
+
+    </main>
+
+    <footer>
+        Built with FastAPI, LangGraph, Groq, PostgreSQL, Tavily and AviationStack
+    </footer>
+
+    <!-- Markdown Renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- PDF Download Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- 3D Solar System Background -->
+    <script src="/static/solar.js"></script>
+
+    <!-- Your Custom JS -->
+    <script src="/static/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+# ─────────────────────────────────────────────────────────────
+#  TripMate AI — .dockerignore
+#  Keeps the build context small and prevents secrets leaking
+#  into the image layer cache.
+# ─────────────────────────────────────────────────────────────
+
+# ── Secrets — NEVER bake into an image ───────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Git metadata ──────────────────────────────────────────────
+.git/
+.gitignore
+
+# ── Python bytecode ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+
+# ── Virtual environments (can be 100s of MB) ─────────────────
+venv/
+env/
+.venv/
+projectenv/
+*env/
+
+# ── Tests & coverage ──────────────────────────────────────────
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ── Type checking ─────────────────────────────────────────────
+.mypy_cache/
+
+# ── IDE & editor configs ──────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS generated ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs & exports ────────────────────────────────────────────
+*.log
+logs/
+*.pdf
+
+# ── Docker files (don't copy into itself) ────────────────────
+Dockerfile
+.dockerignore
+
+# ── Documentation & project meta ─────────────────────────────
+readme.md
+*.md
+LICENSE
+
+# ── Jupyter ───────────────────────────────────────────────────
+*.ipynb
+.ipynb_checkpoints/
+
+# ── Distribution / packaging ──────────────────────────────────
+dist/
+build/
+*.egg-info/

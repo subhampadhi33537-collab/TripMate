@@ -54,17 +54,17 @@ The result is presented in a polished web interface with Markdown rendering, one
 
 ```mermaid
 flowchart LR
-    U[👤 Travel request] --> VC{🎙️ Voice?}
-    VC -- Yes --> VF[/api/clean-voice\ngpt-oss-20b]
+    U["👤 Travel request"] --> VC{"🎙️ Voice input?"}
+    VC -- Yes --> VF["🧠 Voice cleaner\nopenai/gpt-oss-20b"]
     VC -- No  --> F
-    VF --> F[🛫 Flight agent]
-    F --> H[🏨 Hotel research agent]
-    H --> I[🗺️ Itinerary agent]
-    I --> R[✨ Final response agent]
-    R --> V[🖥️ FastAPI web UI]
-    F -. AviationStack .-> A[(Live flight data)]
-    H -. Tavily .-> W[(Web results)]
-    R -. LangGraph checkpoint .-> P[(PostgreSQL)]
+    VF --> F["🛫 Flight agent"]
+    F --> H["🏨 Hotel agent"]
+    H --> I["🗺️ Itinerary agent"]
+    I --> R["✨ Final response agent"]
+    R --> V["🖥️ FastAPI web UI"]
+    F -. AviationStack .-> A[("Live flight data")]
+    H -. Tavily .-> W[("Web results")]
+    R -. LangGraph checkpoint .-> P[("PostgreSQL")]
 ```
 
 ### Agent pipeline
